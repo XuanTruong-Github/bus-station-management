@@ -1,0 +1,93 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: unset !important;
+  font-weight: 500 !important;
+}
+.table-page {
+  tr.dx-header-row td,
+  tr.dx-data-row.dx-row-lines td,
+  tr.dx-row.dx-datagrid-filter-row td {
+    border-right: 1px solid #e0e0e0;
+  }
+
+  .dx-datagrid-headers.dx-header-multi-row
+    .dx-row.dx-header-row
+    > td.dx-command-expand {
+    border-right: none;
+  }
+
+  .dx-datagrid-headers.dx-header-multi-row .dx-row.dx-header-row > td {
+    vertical-align: middle !important;
+  }
+  .dx-row.dx-group-row td.dx-command-expand + td {
+    text-align: left;
+    background: #fff;
+    position: sticky;
+  }
+
+  .dx-row.dx-group-row td:nth-child(1)[class^="dx-command-expand"] + td {
+    left: 32px;
+  }
+
+  .dx-row.dx-group-row td:nth-child(2)[class^="dx-command-expand"] + td {
+    left: 62px;
+  }
+
+  .dx-row.dx-group-row td:nth-child(3)[class^="dx-command-expand"] + td {
+    left: 92px;
+  }
+
+  .dx-datagrid-rowsview
+    tr.dx-freespace-row
+    td.dx-last-cell.dx-pointer-events-none,
+  .dx-datagrid-headers tr.dx-header-row td.dx-last-cell.dx-pointer-events-none,
+  .dx-datagrid-rowsview tr.dx-data-row td.dx-last-cell.dx-pointer-events-none,
+  .dx-datagrid-rowsview
+    tr.dx-virtual-row
+    td.dx-last-cell.dx-pointer-events-none {
+    border-left: none;
+  }
+  .dx-datagrid .dx-datagrid-headers .dx-row td.dx-pointer-events-none,
+  .dx-datagrid
+    .dx-datagrid-rowsview
+    .dx-datagrid-content
+    tr.dx-row
+    td.dx-pointer-events-none {
+    border-left: none;
+  }
+
+  .dx-datagrid
+    .dx-datagrid-rowsview
+    .dx-freespace-row
+    td.dx-pointer-events-none {
+    border-right: none;
+  }
+  .dx-datagrid-headers .dx-datagrid-table .dx-row > td {
+    font-weight: 600;
+  }
+  .dx-datagrid-pager {
+    background: #f3f4f6;
+    padding-bottom: unset;
+  }
+  .dx-freespace-row {
+    display: none;
+  }
+
+  .dx-row-alt > td {
+    background: #f9fafb;
+  }
+  .dx-pager .dx-page {
+    border-radius: 4px;
+  }
+
+  .dx-row td {
+    padding: 14px 12px;
+  }
+  .dx-row .dx-editor-cell .dx-texteditor {
+    padding-inline: 8px;
+  }
+}

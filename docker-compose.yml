@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  quan-ly-thong-tin:
+    image: "lexuantruongdocker/quan-ly-thong-tin-ben-xe:1.0.0.1"
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:80

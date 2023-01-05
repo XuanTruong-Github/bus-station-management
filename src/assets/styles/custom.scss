@@ -1,0 +1,26 @@
+input:-webkit-autofill {
+  background: transparent !important;
+  -webkit-box-shadow: 0 0 0 50px #fff inset;
+  box-shadow: 0 0 0 50px #fff inset;
+}
+.bd-t {
+  border-top: solid 1px #dadce0;
+}
+.bd-b {
+  border-bottom: solid 1px #dadce0;
+}
+.bd-l {
+  border-left: solid 1px #dadce0;
+}
+.bd-r {
+  border-right: solid 1px #dadce0;
+}
+.bd {
+  border: solid 1px #dadce0;
+}
+.el-dialog__body {
+  padding-block: 8px;
+}
+.el-input__suffix-inner {
+  color: #67c23a;
+}
