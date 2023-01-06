@@ -192,7 +192,7 @@
                     circle
                     v-show="true"
                     @click="showConfirmDelete = true"
-                    v-if="chucNang == 'sua-lai-xe'"
+                    v-if="chucNang == 'sua-tai-xe'"
                 ></el-button>
             </div>
             <el-button type="primary" @click="onSubmit">Lưu lại</el-button>
