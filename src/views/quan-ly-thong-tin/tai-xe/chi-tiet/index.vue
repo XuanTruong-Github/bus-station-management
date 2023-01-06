@@ -95,7 +95,7 @@
                     >
                         <el-option
                             v-for="item in danhSachStore.danhSachHangGPLX"
-                            :label="item.hangGPLX"
+                            :label="item.tenHangGPLX"
                             :value="item.id"
                             :key="item.id"
                         />

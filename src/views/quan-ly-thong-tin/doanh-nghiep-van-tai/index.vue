@@ -187,14 +187,11 @@ export default {
         const customSTT = (column) => {
             return store.danhSachDoanhNghiepVanTai.indexOf(column) + 1;
         };
-        const customDiaChi = (row) => {
-            const { diaChi, quanHuyenThiXa, tinhThanhPho } = row;
-            if (diaChi && quanHuyenThiXa && tinhThanhPho) {
+        const customDiaChi = ({ diaChi, quanHuyenThiXa, tinhThanhPho }) => {
+            if (diaChi && quanHuyenThiXa && tinhThanhPho)
                 return `${diaChi}, ${quanHuyenThiXa?.tenHuyen}, ${tinhThanhPho?.tenTinh}`;
-            } else if (diaChi && quanHuyenThiXa && tinhThanhPho == null) {
-                return `${diaChi}, ${quanHuyenThiXa?.tenHuyen}`;
-            } else if (diaChi && quanHuyenThiXa == null && tinhThanhPho == null)
-                return diaChi;
+            else if (diaChi == null && quanHuyenThiXa && tinhThanhPho)
+                return `${quanHuyenThiXa?.tenHuyen}, ${tinhThanhPho?.tenTinh}`;
             else return "";
         };
         const exportExcel = () => {

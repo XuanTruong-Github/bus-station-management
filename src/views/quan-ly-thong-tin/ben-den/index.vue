@@ -174,10 +174,12 @@ export default {
             return store.danhSachBenXe.indexOf(column) + 1;
         };
         const customDiaChi = ({ diaChi, quanHuyenThiXa }) => {
+            console.log(diaChi, quanHuyenThiXa);
             if (diaChi && quanHuyenThiXa) {
                 return `${diaChi}, ${quanHuyenThiXa?.tenHuyen}`;
-            } else if (diaChi && quanHuyenThiXa == null) return diaChi;
-            else return "";
+            } else if (diaChi == null && quanHuyenThiXa) {
+                return quanHuyenThiXa.tenHuyen;
+            } else return "";
         };
         const rowClick = ({ key }) => {
             router.push({ name: "sua-ben-den", query: { id: key } });
