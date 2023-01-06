@@ -27,6 +27,7 @@ function bootstrap(app) {
   }
   app.use(createPinia());
   app.use(router);
+  console.log(import.meta.env.VITE_BASE);
   app.mount("#app");
 }
 bootstrap(createApp(App));

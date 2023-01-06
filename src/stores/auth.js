@@ -24,7 +24,7 @@ export default defineStore("auth", {
       }
     },
     async forgotPassword(payload) {
-      const host = import.meta.env.VITE_HOST;
+      const host = import.meta.env.VITE_BASE;
       const { error } = await supabase.auth.resetPasswordForEmail(payload, {
         redirectTo: host + "/change-password",
       });
