@@ -174,7 +174,6 @@ export default {
             return store.danhSachBenXe.indexOf(column) + 1;
         };
         const customDiaChi = ({ diaChi, quanHuyenThiXa }) => {
-            console.log(diaChi, quanHuyenThiXa);
             if (diaChi && quanHuyenThiXa) {
                 return `${diaChi}, ${quanHuyenThiXa?.tenHuyen}`;
             } else if (diaChi == null && quanHuyenThiXa) {

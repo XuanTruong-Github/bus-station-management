@@ -5,7 +5,11 @@
             <el-button icon="Refresh" @click="store.FindAll">
                 Tải lại
             </el-button>
-            <el-button icon="Download" @click="exportExcel" :disabled="true">
+            <el-button
+                icon="Download"
+                @click="exportExcel"
+                :disabled="store.danhSachTuyenVanChuyen == 0"
+            >
                 Excel
             </el-button>
         </div>
@@ -191,7 +195,14 @@ export default {
             return store.danhSachTuyenVanChuyen.indexOf(column) + 1;
         };
         store.FindAll();
-        return { breadcrumbItems, exportExcel, rowClick, store, customSTT };
+        return {
+            breadcrumbItems,
+            exportExcel,
+            rowClick,
+            store,
+            customSTT,
+            tuyenVanChuyenTable,
+        };
     },
 };
 </script>
