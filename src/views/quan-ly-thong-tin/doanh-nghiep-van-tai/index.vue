@@ -107,14 +107,6 @@
             :width="100"
         ></DxColumn>
         <DxColumn
-            caption="Số tuyến"
-            dataField="soTuyen"
-            :allowSorting="true"
-            :allowHeaderFiltering="false"
-            alignment="left"
-            :width="100"
-        ></DxColumn>
-        <DxColumn
             caption="Điện thoại"
             dataField="soDienThoai"
             :allowSorting="false"
