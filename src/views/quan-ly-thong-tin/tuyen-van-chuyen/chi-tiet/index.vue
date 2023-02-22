@@ -15,19 +15,7 @@
             <span class="font-medium text-base"
                 >Thông tin tuyến vận chuyển</span
             >
-            <el-tooltip
-                :content="tuyenVanChuyen.trangThai"
-                placement="right"
-                v-if="chucNang == 'sua-tuyen-van-chuyen'"
-            >
-                <el-switch
-                    v-model="trangThai"
-                    style="--el-switch-on-color: #13ce66"
-                    size="default"
-                    title="Kích hoạt"
-                    @change="setTrangThai"
-                />
-            </el-tooltip>
+            
         </div>
         <hr class="mb-6 mt-4" />
         <el-row gutter="16">

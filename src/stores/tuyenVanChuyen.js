@@ -28,7 +28,7 @@ export default defineStore("tuyenVanChuyen", {
       const { data, error } = await supabase
         .from("tuyenVanChuyen")
         .select(
-          "id,maTuyen,hanhTrinhChay,loaiTuyenVanChuyen(loaiTuyen),benDi:tuyenVanChuyen_idBenDi_fkey(tenBenXe),benDen:tuyenVanChuyen_idBenDen_fkey(tenBenXe),cuLy,trangThai"
+          "id,maTuyen,hanhTrinhChay,loaiTuyenVanChuyen(loaiTuyen),benDi:tuyenVanChuyen_idBenDi_fkey(tenBenXe),benDen:tuyenVanChuyen_idBenDen_fkey(tenBenXe),cuLy"
         );
       if (error) {
         console.log("Error: ", error);
@@ -75,7 +75,6 @@ export default defineStore("tuyenVanChuyen", {
         cuLy: tuyenVanChuyen.cuLy,
         danhSachThoiGianXuatBen: tuyenVanChuyen.danhSachThoiGianXuatBen,
         danhSachDiemDungNghi: tuyenVanChuyen.danhSachDiemDungNghi,
-        trangThai: tuyenVanChuyen.trangThai,
       };
       const { error } = await supabase.from("tuyenVanChuyen").insert([payload]);
       if (error) {
@@ -105,7 +104,6 @@ export default defineStore("tuyenVanChuyen", {
         cuLy: tuyenVanChuyen.cuLy,
         danhSachThoiGianXuatBen: tuyenVanChuyen.danhSachThoiGianXuatBen,
         danhSachDiemDungNghi: tuyenVanChuyen.danhSachDiemDungNghi,
-        trangThai: tuyenVanChuyen.trangThai,
       };
       const { error } = await supabase
         .from("tuyenVanChuyen")

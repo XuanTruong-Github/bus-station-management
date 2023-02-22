@@ -11,21 +11,8 @@
         size="large"
         class="w-[650px] bg-white mx-auto p-6 rounded-lg bd"
     >
-        <div class="flex items-center justify-between mb-1">
+        <div class="mb-1">
             <span class="font-medium text-base">Thông tin chung</span>
-            <el-tooltip
-                :content="doanhNghiepVanTai.trangThai"
-                placement="right"
-                v-if="chucNang == 'sua-doanh-nghiep-van-tai'"
-            >
-                <el-switch
-                    v-model="trangThai"
-                    style="--el-switch-on-color: #13ce66"
-                    size="default"
-                    title="Kích hoạt"
-                    @change="setTrangThai"
-                />
-            </el-tooltip>
         </div>
         <hr class="mt-2 mb-4" />
         <el-form-item

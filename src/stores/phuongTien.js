@@ -32,7 +32,7 @@ export default defineStore("phuongTien", {
       const { data, error } = await supabase
         .from("phuongTien")
         .select(
-          "id,bienKiemSoat,loaiPhuongTien(tenLoai),soGhe,soGiuong,hanBaoHiemXe,hanDangKiemXe,trangThai"
+          "id,bienKiemSoat,loaiPhuongTien(tenLoai),soGhe,soGiuong,hanBaoHiemXe,hanDangKiemXe"
         );
       if (error) {
         console.log("Error: ", error);
@@ -82,7 +82,6 @@ export default defineStore("phuongTien", {
         idHangGiamSatHanhTrinh: phuongTien.idHangGiamSatHanhTrinh,
         taiKhoanGiamSatHanhTrinh: phuongTien.taiKhoanGiamSatHanhTrinh,
         matKhauGiamSatHanhTrinh: phuongTien.matKhauGiamSatHanhTrinh,
-        trangThai: phuongTien.trangThai,
       };
       const { error } = await supabase.from("phuongTien").insert([payload]);
       if (error) {
@@ -118,7 +117,6 @@ export default defineStore("phuongTien", {
         idHangGiamSatHanhTrinh: phuongTien.idHangGiamSatHanhTrinh,
         taiKhoanGiamSatHanhTrinh: phuongTien.taiKhoanGiamSatHanhTrinh,
         matKhauGiamSatHanhTrinh: phuongTien.matKhauGiamSatHanhTrinh,
-        trangThai: phuongTien.trangThai,
       };
       const { error } = await supabase
         .from("phuongTien")

@@ -10,22 +10,7 @@
         status-icon
         :rules="rules"
     >
-        <div class="flex items-center justify-between mb-1">
-            <span class="font-medium text-base">Thông tin chung</span>
-            <el-tooltip
-                :content="benDen.trangThai"
-                placement="right"
-                v-if="chucNang == 'sua-ben-den'"
-            >
-                <el-switch
-                    v-model="trangThai"
-                    style="--el-switch-on-color: #13ce66"
-                    size="default"
-                    title="Kích hoạt"
-                    @change="setTrangThai"
-                />
-            </el-tooltip>
-        </div>
+        <span class="font-medium text-base mb-1">Thông tin chung</span>
         <hr class="my-4" />
         <el-row :gutter="16">
             <el-col :span="12">

@@ -13,19 +13,7 @@
     >
         <div class="flex items-center justify-between mb-1">
             <span class="font-medium text-base">Thông tin chung</span>
-            <el-tooltip
-                :content="laiXe.trangThai"
-                placement="right"
-                v-if="chucNang == 'sua-tai-xe'"
-            >
-                <el-switch
-                    v-model="trangThai"
-                    style="--el-switch-on-color: #13ce66"
-                    size="default"
-                    title="Kích hoạt"
-                    @change="setTrangThai"
-                />
-            </el-tooltip>
+        
         </div>
         <hr class="mt-2 mb-4" />
         <el-form-item label="Họ tên" prop="hoTen">

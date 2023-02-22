@@ -9,9 +9,7 @@ export default defineStore("laiXe", {
       loading.start();
       const { data, error } = await supabase
         .from("laiXe")
-        .select(
-          "id,hoTen,soCCCD,soGPLX,hangGPLX(tenHangGPLX),soDienThoai,trangThai"
-        );
+        .select("id,hoTen,soCCCD,soGPLX,hangGPLX(tenHangGPLX),soDienThoai");
       if (error) {
         console.log("Error: ", error);
         message("error", "Lấy danh sách lái xe thất bại! lỗi hệ thống");
@@ -52,7 +50,6 @@ export default defineStore("laiXe", {
         idTinh: laiXe.idTinh,
         idHuyen: laiXe.idHuyen,
         diaChi: laiXe.diaChi,
-        trangThai: laiXe.trangThai,
       };
       const { error } = await supabase.from("laiXe").insert([payload]);
       if (error) {
@@ -81,7 +78,6 @@ export default defineStore("laiXe", {
         idTinh: laiXe.idTinh,
         idHuyen: laiXe.idHuyen,
         diaChi: laiXe.diaChi,
-        trangThai: laiXe.trangThai,
       };
       const { error } = await supabase
         .from("laiXe")

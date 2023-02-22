@@ -110,28 +110,7 @@
             alignment="left"
         ></DxColumn>
 
-        <DxColumn
-            caption="Trạng thái"
-            dataField="trangThai"
-            :allowSorting="false"
-            :allowFiltering="false"
-            :allowHeaderFiltering="true"
-            alignment="left"
-            cellTemplate="trangThai"
-            :width="150"
-            fixed="true"
-            fixedPosition="right"
-        ></DxColumn>
-        <template #trangThai="{ data: { data } }">
-            <span
-                :class="
-                    data.trangThai == 'Đang hoạt động'
-                        ? 'text-green-500'
-                        : 'text-red-500'
-                "
-                >{{ data.trangThai }}</span
-            >
-        </template>
+    
     </DxDataGrid>
 </template>
 <script>

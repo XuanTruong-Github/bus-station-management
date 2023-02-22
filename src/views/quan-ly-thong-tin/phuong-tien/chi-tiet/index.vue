@@ -13,19 +13,7 @@
     >
         <div class="flex items-center justify-between mb-1">
             <span class="font-medium text-base">Thông tin xe đăng ký</span>
-            <el-tooltip
-                :content="phuongTien.trangThai"
-                placement="right"
-                v-if="chucNang == 'sua-phuong-tien'"
-            >
-                <el-switch
-                    v-model="trangThai"
-                    style="--el-switch-on-color: #13ce66"
-                    size="default"
-                    title="Kích hoạt"
-                    @change="setTrangThai"
-                />
-            </el-tooltip>
+        
         </div>
         <hr class="mt-2 mb-6" />
         <el-row :gutter="16">

@@ -11,21 +11,9 @@
         size="large"
         class="w-[600px] bg-white mx-auto p-6 rounded-lg bd"
     >
-        <div class="flex items-center justify-between mb-1">
+        <div class=" mb-1">
             <span class="font-medium text-base">Thông tin nhà xe</span>
-            <el-tooltip
-                :content="nhaXe.trangThai"
-                placement="right"
-                v-if="chucNang == 'sua-nha-xe'"
-            >
-                <el-switch
-                    v-model="trangThai"
-                    style="--el-switch-on-color: #13ce66"
-                    size="default"
-                    title="Kích hoạt"
-                    @change="setTrangThai"
-                />
-            </el-tooltip>
+        
         </div>
         <hr class="mt-2 mb-4" />
         <el-form-item label="Tên nhà xe" prop="tenNhaXe">

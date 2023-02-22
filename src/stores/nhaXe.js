@@ -9,7 +9,7 @@ export default defineStore("nhaXe", {
       loading.start();
       const { data, error } = await supabase
         .from("nhaXe")
-        .select("id,tenNhaXe,soDienThoai,diaChi,email,trangThai");
+        .select("id,tenNhaXe,soDienThoai,diaChi,email");
       if (error) {
         console.log("Error: ", error);
         loading.stop();
@@ -47,7 +47,6 @@ export default defineStore("nhaXe", {
         tenNguoiDaiDien: nhaXe.tenNguoiDaiDien,
         diaChi: nhaXe.diaChi,
         idDoanhNghiepVanTai: nhaXe.idDoanhNghiepVanTai,
-        trangThai: nhaXe.trangThai,
       };
       const { error } = await supabase.from("nhaXe").insert([payload]);
       if (error) {
@@ -71,7 +70,6 @@ export default defineStore("nhaXe", {
         tenNguoiDaiDien: nhaXe.tenNguoiDaiDien,
         diaChi: nhaXe.diaChi,
         idDoanhNghiepVanTai: nhaXe.idDoanhNghiepVanTai,
-        trangThai: nhaXe.trangThai,
       };
       const { error } = await supabase
         .from("nhaXe")

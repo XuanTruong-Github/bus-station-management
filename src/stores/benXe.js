@@ -83,7 +83,6 @@ export default defineStore("benXe", {
         idTinh: benXe.idTinh,
         idHuyen: benXe.idHuyen,
         diaChi: benXe.diaChi,
-        trangThai: benXe.trangThai,
       };
       const { error } = await supabase
         .from("benXe")

@@ -10,7 +10,7 @@ export default defineStore("doanhNghiepVanTai", {
       const { data, error } = await supabase
         .from("doanhNghiepVanTai")
         .select(
-          "id,tenDoanhNghiepVanTai,maSoThue,tenNguoiDaiDien,diaChi,tinhThanhPho(tenTinh),quanHuyenThiXa(tenHuyen),soDienThoai,trangThai"
+          "id,tenDoanhNghiepVanTai,maSoThue,tenNguoiDaiDien,diaChi,tinhThanhPho(tenTinh),quanHuyenThiXa(tenHuyen),soDienThoai"
         );
       if (error) {
         console.log(error);
@@ -89,7 +89,6 @@ export default defineStore("doanhNghiepVanTai", {
         idTinh: doanhNghiepVanTai.idTinh,
         idHuyen: doanhNghiepVanTai.idHuyen,
         diaChi: doanhNghiepVanTai.diaChi,
-        trangThai: doanhNghiepVanTai.trangThai,
       };
       const { error } = await supabase
         .from("doanhNghiepVanTai")
