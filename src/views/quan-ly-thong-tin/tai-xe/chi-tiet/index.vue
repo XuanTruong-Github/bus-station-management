@@ -13,49 +13,48 @@
     >
         <div class="flex items-center justify-between mb-1">
             <span class="font-medium text-base">Thông tin chung</span>
-        
         </div>
         <hr class="mt-2 mb-4" />
         <el-form-item label="Họ tên" prop="hoTen">
-            <el-input
+            <ElInput
                 v-model="laiXe.hoTen"
                 :maxlength="200"
                 show-word-limit
                 @blur="clearValidate('hoTen')"
-            ></el-input>
+            ></ElInput>
         </el-form-item>
-        <el-row :gutter="16">
-            <el-col :span="12" :offset="0">
+        <ElRow :gutter="16">
+            <ElCol :span="12" :offset="0">
                 <el-form-item label="Số CCCD/CMND" prop="soCCCD">
-                    <el-input
+                    <ElInput
                         v-model="laiXe.soCCCD"
                         :maxlength="200"
                         show-word-limit
                         @blur="clearValidate('soCCCD')"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="12" :offset="0">
+            </ElCol>
+            <ElCol :span="12" :offset="0">
                 <el-form-item label="Số điện thoại" prop="soDienThoai">
-                    <el-input
+                    <ElInput
                         v-model="laiXe.soDienThoai"
                         :maxlength="13"
                         show-word-limit
                         @blur="clearValidate('soDienThoai')"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-        </el-row>
+            </ElCol>
+        </ElRow>
         <el-form-item label="Số giấy phép lái xe" prop="soGPLX">
-            <el-input
+            <ElInput
                 v-model="laiXe.soGPLX"
                 :maxlength="200"
                 show-word-limit
                 @blur="clearValidate('soGPLX')"
-            ></el-input>
+            ></ElInput>
         </el-form-item>
-        <el-row :gutter="16">
-            <el-col :span="12" :offset="0">
+        <ElRow :gutter="16">
+            <ElCol :span="12" :offset="0">
                 <el-form-item
                     label="Hạn giấy phép lái xe"
                     prop="thoiGianHieuLucGPLX"
@@ -68,10 +67,10 @@
                         @blur="clearValidate('thoiGianHieuLucGPLX')"
                     />
                 </el-form-item>
-            </el-col>
-            <el-col :span="12" :offset="0">
+            </ElCol>
+            <ElCol :span="12" :offset="0">
                 <el-form-item label="Hạng giấy phép lái xe" prop="idHangGPLX">
-                    <el-select
+                    <ElSelect
                         v-model="laiXe.idHangGPLX"
                         placeholder="Chọn doanh nghiệp vận tải"
                         class="w-full"
@@ -81,18 +80,18 @@
                         filterable
                         @blur="clearValidate('idHangGPLX')"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in danhSachStore.danhSachHangGPLX"
                             :label="item.tenHangGPLX"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-        </el-row>
+            </ElCol>
+        </ElRow>
         <el-form-item label="Nhà xe" prop="nhaXe">
-            <el-select
+            <ElSelect
                 v-model="laiXe.nhaXe"
                 placeholder="Chọn nhà xe"
                 class="w-full"
@@ -103,22 +102,22 @@
                 :multiple-limit="5"
                 @blur="clearValidate('nhaXe')"
             >
-                <el-option
+                <ElOption
                     v-for="item in nhaXeStore.danhSachNhaXe"
                     :label="item.tenNhaXe"
                     :value="item.id"
                     :key="item.id"
                 />
-            </el-select>
+            </ElSelect>
         </el-form-item>
 
         <span class="font-medium text-base mt-4">Thông tin địa chỉ</span>
         <hr class="mt-2 mb-4" />
 
-        <el-row :gutter="16">
-            <el-col :span="12">
+        <ElRow :gutter="16">
+            <ElCol :span="12">
                 <el-form-item label="Tỉnh/Thành phố" prop="idTinh">
-                    <el-select
+                    <ElSelect
                         v-model="laiXe.idTinh"
                         placeholder="Chọn tỉnh/thành phố"
                         class="w-full"
@@ -129,18 +128,18 @@
                         :onChange="handleChonTinhThanh"
                         @blur="clearValidate('idTinh')"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in danhSachStore.danhSachTinhThanh"
                             :label="item.tenTinh"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-            <el-col :span="12">
+            </ElCol>
+            <ElCol :span="12">
                 <el-form-item label="Quận/Huyện/Thị xã" prop="idHuyen">
-                    <el-select
+                    <ElSelect
                         v-model="laiXe.idHuyen"
                         placeholder="Chọn quận huyện thị xã"
                         class="w-full"
@@ -151,29 +150,29 @@
                         :disabled="!laiXe.idTinh"
                         @blur="clearValidate('idHuyen')"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in danhSachStore.danhSachQuanHuyen"
                             :key="item.id"
                             :value="item.id"
                             :label="item.tenHuyen"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-        </el-row>
+            </ElCol>
+        </ElRow>
 
         <el-form-item label="Địa chỉ" prop="diaChi">
-            <el-input
+            <ElInput
                 v-model="laiXe.diaChi"
                 :rows="3"
                 type="textarea"
                 :maxlength="200"
                 show-word-limit
-            ></el-input>
+            ></ElInput>
         </el-form-item>
         <div class="flex justify-between items-center mt-10">
             <div>
-                <el-button
+                <ElButton
                     type="danger"
                     size="default"
                     icon="delete"
@@ -181,12 +180,12 @@
                     v-show="true"
                     @click="showConfirmDelete = true"
                     v-if="chucNang == 'sua-tai-xe'"
-                ></el-button>
+                ></ElButton>
             </div>
-            <el-button type="primary" @click="onSubmit">Lưu lại</el-button>
+            <ElButton type="primary" @click="onSubmit">Lưu lại</ElButton>
         </div>
     </el-form>
-    <el-dialog
+    <ElDialog
         v-model="showConfirmDelete"
         :width="470"
         title="Xác nhận xóa"
@@ -199,13 +198,11 @@
         </p>
         <template #footer>
             <div class="flex items-center justify-end">
-                <el-button @click="showConfirmDelete = false">Hủy</el-button>
-                <el-button type="danger" @click="xoaLaiXe">
-                    Xác nhận
-                </el-button>
+                <ElButton @click="showConfirmDelete = false">Hủy</ElButton>
+                <ElButton type="danger" @click="xoaLaiXe"> Xác nhận </ElButton>
             </div>
         </template>
-    </el-dialog>
+    </ElDialog>
 </template>
 <script>
 import Breadcrumb from "@/components/breadcrumb.vue";

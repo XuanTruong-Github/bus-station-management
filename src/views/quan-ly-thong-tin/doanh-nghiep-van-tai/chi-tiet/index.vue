@@ -19,31 +19,31 @@
             label="Tên doanh nghiệp vận tải"
             prop="tenDoanhNghiepVanTai"
         >
-            <el-input
+            <ElInput
                 v-model="doanhNghiepVanTai.tenDoanhNghiepVanTai"
                 :maxlength="200"
                 show-word-limit
                 @blur="clearValidate('tenDoanhNghiepVanTai')"
-            ></el-input>
+            ></ElInput>
         </el-form-item>
         <el-form-item label="Mã số thuế" prop="maSoThue">
-            <el-input
+            <ElInput
                 v-model="doanhNghiepVanTai.maSoThue"
                 :maxlength="13"
                 show-word-limit
                 @blur="clearValidate('maSoThue')"
-            ></el-input>
+            ></ElInput>
         </el-form-item>
         <el-form-item label="Số giấy phép kinh doanh" prop="soGPKD">
-            <el-input
+            <ElInput
                 v-model="doanhNghiepVanTai.soGPKD"
                 :maxlength="20"
                 show-word-limit
                 @blur="clearValidate('soGPKD')"
-            ></el-input>
+            ></ElInput>
         </el-form-item>
-        <el-row>
-            <el-col :span="12" class="pr-2">
+        <ElRow>
+            <ElCol :span="12" class="pr-2">
                 <el-form-item
                     label="Ngày cấp giấy phép kinh doanh"
                     prop="ngayCapGPKD"
@@ -57,76 +57,76 @@
                         @blur="clearValidate('ngayCapGPKD')"
                     />
                 </el-form-item>
-            </el-col>
-            <el-col :span="12" class="pl-2">
+            </ElCol>
+            <ElCol :span="12" class="pl-2">
                 <el-form-item
                     label="Nơi cấp giấy phép kinh doanh"
                     prop="noiCapGPKD"
                 >
-                    <el-input
+                    <ElInput
                         v-model="doanhNghiepVanTai.noiCapGPKD"
                         :maxlength="200"
                         show-word-limit
                         @blur="clearValidate('noiCapGPKD')"
-                    ></el-input> </el-form-item
-            ></el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="12" class="pr-2">
+                    ></ElInput> </el-form-item
+            ></ElCol>
+        </ElRow>
+        <ElRow>
+            <ElCol :span="12" class="pr-2">
                 <el-form-item label="Người đại diện" prop="tenNguoiDaiDien">
-                    <el-input
+                    <ElInput
                         v-model="doanhNghiepVanTai.tenNguoiDaiDien"
                         :maxlength="200"
                         show-word-limit
                         @blur="clearValidate('tenNguoiDaiDien')"
                     >
-                    </el-input>
+                    </ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="12" class="pl-2">
+            </ElCol>
+            <ElCol :span="12" class="pl-2">
                 <el-form-item label="Chức vụ" prop="idChucVuNguoiDaiDien">
-                    <el-select
+                    <ElSelect
                         v-model="doanhNghiepVanTai.idChucVuNguoiDaiDien"
                         class="w-full"
                         placeholder="Chọn chức vụ"
                         no-data-text="Không có dữ liệu"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in danhSachStore.danhSachChucVu"
                             :label="item.tenChucVu"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select> </el-form-item
-            ></el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="12" class="pr-2"
+                    </ElSelect> </el-form-item
+            ></ElCol>
+        </ElRow>
+        <ElRow>
+            <ElCol :span="12" class="pr-2"
                 ><el-form-item label="Email" prop="email">
-                    <el-input
+                    <ElInput
                         v-model="doanhNghiepVanTai.email"
                         :maxlength="200"
                         show-word-limit
                         @blur="clearValidate('email')"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="12" class="pl-2">
+            </ElCol>
+            <ElCol :span="12" class="pl-2">
                 <el-form-item label="Số điện thoại" prop="soDienThoai">
-                    <el-input
+                    <ElInput
                         v-model="doanhNghiepVanTai.soDienThoai"
                         :maxlength="13"
                         show-word-limit
                         @blur="clearValidate('soDienThoai')"
-                    ></el-input> </el-form-item
-            ></el-col>
-        </el-row>
+                    ></ElInput> </el-form-item
+            ></ElCol>
+        </ElRow>
         <h4 class="mb-1 mt-4 font-medium text-base">Thông tin địa chỉ</h4>
         <hr class="mb-6 mt-2" />
-        <el-row :gutter="16">
-            <el-col :span="12">
+        <ElRow :gutter="16">
+            <ElCol :span="12">
                 <el-form-item label="Tỉnh/Thành phố" prop="idTinh">
-                    <el-select
+                    <ElSelect
                         v-model="doanhNghiepVanTai.idTinh"
                         placeholder="Chọn tỉnh/thành phố"
                         class="w-full"
@@ -137,18 +137,18 @@
                         :onChange="handleChonTinhThanh"
                         @blur="clearValidate('idTinh')"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in danhSachStore.danhSachTinhThanh"
                             :label="item.tenTinh"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-            <el-col :span="12">
+            </ElCol>
+            <ElCol :span="12">
                 <el-form-item label="Quận/Huyện/Thị xã" prop="idHuyen">
-                    <el-select
+                    <ElSelect
                         v-model="doanhNghiepVanTai.idHuyen"
                         placeholder="Chọn quận huyện thị xã"
                         class="w-full"
@@ -159,28 +159,28 @@
                         :disabled="!doanhNghiepVanTai.idTinh"
                         @blur="clearValidate('idHuyen')"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in danhSachStore.danhSachQuanHuyen"
                             :key="item.id"
                             :value="item.id"
                             :label="item.tenHuyen"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-        </el-row>
+            </ElCol>
+        </ElRow>
         <el-form-item label="Địa chỉ" prop="diaChi">
-            <el-input
+            <ElInput
                 v-model="doanhNghiepVanTai.diaChi"
                 :rows="3"
                 type="textarea"
                 :maxlength="300"
                 show-word-limit
-            ></el-input>
+            ></ElInput>
         </el-form-item>
         <div class="flex justify-between items-center mt-10">
             <div>
-                <el-button
+                <ElButton
                     type="danger"
                     size="default"
                     icon="delete"
@@ -188,12 +188,12 @@
                     v-show="true"
                     @click="showConfirmDelete = true"
                     v-if="chucNang == 'sua-doanh-nghiep-van-tai'"
-                ></el-button>
+                ></ElButton>
             </div>
-            <el-button type="primary" @click="onSubmit">Lưu lại</el-button>
+            <ElButton type="primary" @click="onSubmit">Lưu lại</ElButton>
         </div>
     </el-form>
-    <el-dialog
+    <ElDialog
         v-model="showConfirmDelete"
         :width="470"
         title="Xác nhận xóa"
@@ -207,13 +207,13 @@
         </p>
         <template #footer>
             <div class="flex items-center justify-end">
-                <el-button @click="showConfirmDelete = false">Hủy</el-button>
-                <el-button type="danger" @click="xoaDoanhNghiepVanTai">
+                <ElButton @click="showConfirmDelete = false">Hủy</ElButton>
+                <ElButton type="danger" @click="xoaDoanhNghiepVanTai">
                     Xác nhận
-                </el-button>
+                </ElButton>
             </div>
         </template>
-    </el-dialog>
+    </ElDialog>
 </template>
 
 <script>

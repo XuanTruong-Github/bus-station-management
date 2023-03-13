@@ -38,17 +38,7 @@ function clearValidate(prop) {
 </script>
 <template>
     <section
-        class="
-            grid
-            place-items-center
-            w-screen
-            min-h-full
-            py-12
-            px-4
-            sm:px-6
-            lg:px-8
-            bg-gray-100
-        "
+        class="grid place-items-center w-screen min-h-full py-12 px-4 sm:px-6 lg:px-8 bg-gray-100"
     >
         <article
             class="w-[450px] max-w-md bg-white rounded-xl p-9 shadow"
@@ -61,14 +51,7 @@ function clearValidate(prop) {
                     alt="Your Company"
                 />
                 <span
-                    class="
-                        mt-6
-                        text-3xl
-                        font-bold
-                        tracking-tight
-                        text-gray-900
-                        uppercase
-                    "
+                    class="mt-6 text-3xl font-bold tracking-tight text-gray-900 uppercase"
                 >
                     Bạn quên mật khẩu?
                 </span>
@@ -102,7 +85,7 @@ function clearValidate(prop) {
                     ]"
                     @blur="clearValidate('email')"
                 >
-                    <el-input
+                    <ElInput
                         v-model="email"
                         placeholder="Nhập địa chỉ email"
                         :maxlength="200"
@@ -111,13 +94,13 @@ function clearValidate(prop) {
                     />
                 </el-form-item>
                 <div class="flex justify-between items-center mt-9">
-                    <el-button
+                    <ElButton
                         icon="Back"
                         circle
                         @click="$router.push({ name: 'login' })"
-                    ></el-button>
-                    <el-button type="primary" @click="handleSubmit"
-                        >Tiếp theo</el-button
+                    ></ElButton>
+                    <ElButton type="primary" @click="handleSubmit"
+                        >Tiếp theo</ElButton
                     >
                 </div>
             </el-form>

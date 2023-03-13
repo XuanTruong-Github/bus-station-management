@@ -17,11 +17,11 @@ function handleToogle() {
             router
         >
             <div class="flex items-center pl-[0.85rem] h-14">
-                <el-button link @click="handleToogle">
+                <ElButton link @click="handleToogle">
                     <template #icon>
                         <i class="mdi mdi-menu text-2xl"></i>
                     </template>
-                </el-button>
+                </ElButton>
                 <span
                     class="whitespace-nowrap text-base ml-[26px] flex-1"
                     v-show="!isOpen"

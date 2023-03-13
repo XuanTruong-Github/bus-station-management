@@ -1,27 +1,9 @@
 <template>
     <section
-        class="
-            grid
-            place-items-center
-            w-screen
-            min-h-full
-            py-12
-            px-4
-            sm:px-6
-            lg:px-8
-            bg-gray-100
-        "
+        class="grid place-items-center w-screen min-h-full py-12 px-4 sm:px-6 lg:px-8 bg-gray-100"
     >
         <div
-            class="
-                w-[450px]
-                max-w-md
-                space-y-8
-                bg-white
-                rounded-2xl
-                p-10
-                shadow
-            "
+            class="w-[450px] max-w-md space-y-8 bg-white rounded-2xl p-10 shadow"
         >
             <div class="flex flex-col items-center">
                 <img
@@ -49,7 +31,7 @@
                 :rules="rules"
             >
                 <el-form-item label="Mật khẩu mới" prop="password">
-                    <el-input
+                    <ElInput
                         v-model="model.password"
                         type="password"
                         autocomplete="off"
@@ -63,7 +45,7 @@
                     label="Xác nhận mật khẩu mới"
                     prop="confirmPassword"
                 >
-                    <el-input
+                    <ElInput
                         v-model="model.confirmPassword"
                         type="password"
                         autocomplete="off"
@@ -74,15 +56,15 @@
                     />
                 </el-form-item>
                 <div class="flex items-center justify-between mt-8">
-                    <el-button
+                    <ElButton
                         title="Trở lại trang chủ"
                         circle
                         icon="back"
                         @click="$router.push({ name: 'home' })"
                     >
-                    </el-button>
-                    <el-button type="primary" @click="handleSubmit"
-                        >Lưu lại</el-button
+                    </ElButton>
+                    <ElButton type="primary" @click="handleSubmit"
+                        >Lưu lại</ElButton
                     >
                 </div>
             </el-form>

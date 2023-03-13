@@ -1,30 +1,7 @@
 import { defineStore } from "pinia";
 import supabase from "@/plugins/supabase";
 export default defineStore("benXe", {
-  state: () => ({
-    danhSachBenXe: [],
-  }),
   actions: {
-    async FindAll() {
-      loading.start();
-      const query =
-        "*,loaiBenXe(loaiBen),tinhThanhPho(tenTinh),quanHuyenThiXa(tenHuyen)";
-      const { data, error } = await supabase.from("benXe").select(query);
-      if (error) {
-        console.log("Error: ", error);
-        loading.stop();
-        return {
-          status: false,
-          message: "Lấy danh sách bến xe thất bại! Lỗi hệ thống",
-        };
-      } else {
-        this.danhSachBenXe = data;
-        loading.stop();
-        return {
-          status: true,
-        };
-      }
-    },
     async FindAllByIdTinhThanh(id) {
       loading.start();
       const query = "id,maBenXe,tenBenXe";
@@ -114,26 +91,6 @@ export default defineStore("benXe", {
         return {
           status: true,
           message: "Xóa bến xe thành công",
-        };
-      }
-    },
-    async FindByID(id) {
-      const { data, error } = await supabase
-        .from("benXe")
-        .select()
-        .eq("id", id)
-        .limit(1)
-        .single();
-      if (error) {
-        console.log("Error: ", error);
-        return {
-          status: false,
-          message: "Lấy chi tiết bến xe thất bại! Lỗi hệ thống",
-        };
-      } else {
-        return {
-          status: true,
-          data,
         };
       }
     },

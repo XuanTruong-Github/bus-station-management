@@ -15,7 +15,7 @@
         <p class="text-gray-600">Một số thông tin về tài khoản của bạn</p>
         <hr class="my-6" />
         <el-form-item label="Họ tên" prop="hoTen">
-            <el-input
+            <ElInput
                 v-model="model.hoTen"
                 :maxlength="200"
                 show-word-limit
@@ -24,11 +24,11 @@
         </el-form-item>
         <hr class="my-6" />
         <el-form-item label="Email" prop="email">
-            <el-input v-model="model.email" readonly />
+            <ElInput v-model="model.email" readonly />
         </el-form-item>
         <hr class="my-6" />
         <el-form-item label="Số điện thoại" prop="soDienThoai">
-            <el-input
+            <ElInput
                 v-model="model.soDienThoai"
                 :maxlength="13"
                 show-word-limit
@@ -37,7 +37,7 @@
         </el-form-item>
         <hr class="my-6" />
         <el-form-item label="Chức vụ" prop="chucVu">
-            <el-input v-model="model.chucVu" readonly />
+            <ElInput v-model="model.chucVu" readonly />
         </el-form-item>
         <hr class="my-6" />
         <div class="flex items-center justify-between">
@@ -46,8 +46,8 @@
                 class="el-link el-link--primary is-underline"
                 >Đặt lại mật khẩu</router-link
             >
-            <el-button type="primary" size="large" @click="onSubmit"
-                >Lưu lại</el-button
+            <ElButton type="primary" size="large" @click="onSubmit"
+                >Lưu lại</ElButton
             >
         </div>
     </el-form>

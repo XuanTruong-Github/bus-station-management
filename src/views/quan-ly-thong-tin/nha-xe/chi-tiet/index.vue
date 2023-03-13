@@ -11,51 +11,50 @@
         size="large"
         class="w-[600px] bg-white mx-auto p-6 rounded-lg bd"
     >
-        <div class=" mb-1">
+        <div class="mb-1">
             <span class="font-medium text-base">Thông tin nhà xe</span>
-        
         </div>
         <hr class="mt-2 mb-4" />
         <el-form-item label="Tên nhà xe" prop="tenNhaXe">
-            <el-input
+            <ElInput
                 v-model="nhaXe.tenNhaXe"
                 :maxlength="200"
                 show-word-limit
                 @blur="clearValidate('tenNhaXe')"
-            ></el-input>
+            ></ElInput>
         </el-form-item>
         <el-form-item label="Người đại diện" prop="tenNguoiDaiDien">
-            <el-input
+            <ElInput
                 v-model="nhaXe.tenNguoiDaiDien"
                 :maxlength="200"
                 show-word-limit
                 @blur="clearValidate('tenNguoiDaiDien')"
-            ></el-input>
+            ></ElInput>
         </el-form-item>
 
-        <el-row gutter="16">
-            <el-col :span="12"
+        <ElRow gutter="16">
+            <ElCol :span="12"
                 ><el-form-item label="Email" prop="email">
-                    <el-input
+                    <ElInput
                         v-model="nhaXe.email"
                         :maxlength="200"
                         show-word-limit
                         @blur="clearValidate('email')"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="12">
+            </ElCol>
+            <ElCol :span="12">
                 <el-form-item label="Số điện thoại" prop="soDienThoai">
-                    <el-input
+                    <ElInput
                         v-model="nhaXe.soDienThoai"
                         :maxlength="13"
                         show-word-limit
                         @blur="clearValidate('soDienThoai')"
-                    ></el-input> </el-form-item
-            ></el-col>
-        </el-row>
+                    ></ElInput> </el-form-item
+            ></ElCol>
+        </ElRow>
         <el-form-item label="Doanh nghiệp vận tải" prop="idDoanhNghiepVanTai">
-            <el-select
+            <ElSelect
                 v-model="nhaXe.idDoanhNghiepVanTai"
                 placeholder="Chọn doanh nghiệp vận tải"
                 class="w-full"
@@ -65,26 +64,26 @@
                 filterable
                 @blur="clearValidate('idDoanhNghiepVanTai')"
             >
-                <el-option
+                <ElOption
                     v-for="item in doanhNghiepVanTaiStore.danhSachDoanhNghiepVanTai"
                     :label="item.tenDoanhNghiepVanTai"
                     :value="item.id"
                     :key="item.id"
                 />
-            </el-select>
+            </ElSelect>
         </el-form-item>
         <el-form-item label="Địa chỉ" prop="diaChi">
-            <el-input
+            <ElInput
                 v-model="nhaXe.diaChi"
                 :rows="3"
                 type="textarea"
                 :maxlength="300"
                 show-word-limit
-            ></el-input>
+            ></ElInput>
         </el-form-item>
         <div class="flex justify-between items-center mt-10">
             <div>
-                <el-button
+                <ElButton
                     type="danger"
                     size="default"
                     icon="delete"
@@ -92,12 +91,12 @@
                     v-show="true"
                     @click="showConfirmDelete = true"
                     v-if="chucNang == 'sua-nha-xe'"
-                ></el-button>
+                ></ElButton>
             </div>
-            <el-button type="primary" @click="onSubmit">Lưu lại</el-button>
+            <ElButton type="primary" @click="onSubmit">Lưu lại</ElButton>
         </div>
     </el-form>
-    <el-dialog
+    <ElDialog
         v-model="showConfirmDelete"
         :width="470"
         title="Xác nhận xóa"
@@ -110,13 +109,11 @@
         </p>
         <template #footer>
             <div class="flex items-center justify-end">
-                <el-button @click="showConfirmDelete = false">Hủy</el-button>
-                <el-button type="danger" @click="xoaNhaXe">
-                    Xác nhận
-                </el-button>
+                <ElButton @click="showConfirmDelete = false">Hủy</ElButton>
+                <ElButton type="danger" @click="xoaNhaXe"> Xác nhận </ElButton>
             </div>
         </template>
-    </el-dialog>
+    </ElDialog>
 </template>
 
 <script>

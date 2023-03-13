@@ -15,13 +15,12 @@
             <span class="font-medium text-base"
                 >Thông tin tuyến vận chuyển</span
             >
-            
         </div>
         <hr class="mb-6 mt-4" />
-        <el-row gutter="16">
-            <el-col :span="12">
+        <ElRow gutter="16">
+            <ElCol :span="12">
                 <el-form-item label="Tỉnh đi" prop="idTinhDi">
-                    <el-select
+                    <ElSelect
                         v-model="tuyenVanChuyen.idTinhDi"
                         placeholder="Chọn tỉnh đi"
                         class="w-full"
@@ -32,18 +31,18 @@
                         :onChange="handleChonTinhDi"
                         @blur="clearValidate('idTinhDi')"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in danhSachStore.danhSachTinhThanh"
                             :label="item.tenTinh"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-            <el-col :span="12"
+            </ElCol>
+            <ElCol :span="12"
                 ><el-form-item label="Bến đi" prop="idBenDi">
-                    <el-select
+                    <ElSelect
                         v-model="tuyenVanChuyen.idBenDi"
                         placeholder="Chọn bến đi"
                         class="w-full"
@@ -54,20 +53,20 @@
                         :disabled="tuyenVanChuyen.idTinhDi == null"
                         @blur="clearValidate('idBenDi')"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in danhSachBenDi"
                             :label="item.tenBenXe"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-        </el-row>
-        <el-row gutter="16">
-            <el-col :span="12">
+            </ElCol>
+        </ElRow>
+        <ElRow gutter="16">
+            <ElCol :span="12">
                 <el-form-item label="Tỉnh đến" prop="idTinhDen">
-                    <el-select
+                    <ElSelect
                         v-model="tuyenVanChuyen.idTinhDen"
                         placeholder="Chọn tỉnh đến"
                         class="w-full"
@@ -78,18 +77,18 @@
                         :onChange="handleChonTinhDen"
                         @blur="clearValidate('idTinhDen')"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in danhSachStore.danhSachTinhThanh"
                             :label="item.tenTinh"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-            <el-col :span="12"
+            </ElCol>
+            <ElCol :span="12"
                 ><el-form-item label="Bến đến" prop="idBenDen">
-                    <el-select
+                    <ElSelect
                         v-model="tuyenVanChuyen.idBenDen"
                         placeholder="Chọn bến đến"
                         class="w-full"
@@ -101,30 +100,30 @@
                         @change="handleTaoMaTuyen"
                         @blur="clearValidate('idBenDen')"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in danhSachBenDen"
                             :label="item.tenBenXe"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-        </el-row>
-        <el-row gutter="16">
-            <el-col :span="12">
+            </ElCol>
+        </ElRow>
+        <ElRow gutter="16">
+            <ElCol :span="12">
                 <el-form-item label="Mã tuyến" prop="maTuyen">
-                    <el-input
+                    <ElInput
                         v-model="tuyenVanChuyen.maTuyen"
                         :maxlength="200"
                         readonly
                         @blur="clearValidate('maTuyen')"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="12">
+            </ElCol>
+            <ElCol :span="12">
                 <el-form-item label="Loại tuyến" prop="idLoaiTuyen">
-                    <el-select
+                    <ElSelect
                         v-model="tuyenVanChuyen.idLoaiTuyen"
                         placeholder="Chọn loại tuyến"
                         class="w-full"
@@ -134,28 +133,28 @@
                         filterable
                         @blur="clearValidate('idLoaiTuyen')"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in tuyenVanChuyenStore.danhSachLoaiTuyenVanChuyen"
                             :label="item.loaiTuyen"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-        </el-row>
+            </ElCol>
+        </ElRow>
         <el-form-item label="Hành trình chạy" prop="hanhTrinhChay">
-            <el-input
+            <ElInput
                 v-model="tuyenVanChuyen.hanhTrinhChay"
                 :maxlength="400"
                 show-word-limit
                 @blur="clearValidate('hanhTrinhChay')"
-            ></el-input>
+            ></ElInput>
         </el-form-item>
-        <el-row :gutter="16">
-            <el-col :span="12" :offset="0">
+        <ElRow :gutter="16">
+            <ElCol :span="12" :offset="0">
                 <el-form-item label="Nhà xe" prop="nhaXe">
-                    <el-select
+                    <ElSelect
                         v-model="tuyenVanChuyen.nhaXe"
                         class="w-full"
                         no-data-text="Không có dữ liệu"
@@ -166,30 +165,30 @@
                         placeholder="Chọn nhà xe"
                         @blur="clearValidate('nhaXe')"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in nhaXeStore.danhSachNhaXe"
                             :label="item.tenNhaXe"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-            <el-col :span="12" :offset="0">
+            </ElCol>
+            <ElCol :span="12" :offset="0">
                 <el-form-item label="Cự ly (km)" prop="cuLy">
-                    <el-input
+                    <ElInput
                         v-model="tuyenVanChuyen.cuLy"
                         type="number"
                         :min="0"
                         :max="2000"
                         @blur="clearValidate('cuLy')"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-        </el-row>
+            </ElCol>
+        </ElRow>
 
-        <el-row :gutter="16">
-            <el-col :span="12" :offset="0">
+        <ElRow :gutter="16">
+            <ElCol :span="12" :offset="0">
                 <DxDataGrid
                     class="table-page"
                     :show-borders="true"
@@ -224,8 +223,8 @@
                         />
                     </DxColumn>
                 </DxDataGrid>
-            </el-col>
-            <el-col :span="12" :offset="0">
+            </ElCol>
+            <ElCol :span="12" :offset="0">
                 <DxDataGrid
                     class="table-page"
                     :show-borders="true"
@@ -258,11 +257,11 @@
                         />
                     </DxColumn>
                 </DxDataGrid>
-            </el-col>
-        </el-row>
+            </ElCol>
+        </ElRow>
         <div class="flex justify-between items-center mt-10">
             <div>
-                <el-button
+                <ElButton
                     type="danger"
                     size="default"
                     icon="delete"
@@ -270,12 +269,12 @@
                     v-show="true"
                     @click="showConfirmDelete = true"
                     v-if="chucNang == 'sua-tuyen-van-chuyen'"
-                ></el-button>
+                ></ElButton>
             </div>
-            <el-button type="primary" @click="onSubmit">Lưu lại</el-button>
+            <ElButton type="primary" @click="onSubmit">Lưu lại</ElButton>
         </div>
     </el-form>
-    <el-dialog
+    <ElDialog
         v-model="showConfirmDelete"
         :width="524"
         title="Xác nhận xóa"
@@ -289,13 +288,13 @@
         </p>
         <template #footer>
             <div class="flex items-center justify-end">
-                <el-button @click="showConfirmDelete = false">Hủy</el-button>
-                <el-button type="danger" @click="xoaTuyenVanChuyen">
+                <ElButton @click="showConfirmDelete = false">Hủy</ElButton>
+                <ElButton type="danger" @click="xoaTuyenVanChuyen">
                     Xác nhận
-                </el-button>
+                </ElButton>
             </div>
         </template>
-    </el-dialog>
+    </ElDialog>
 </template>
 <script>
 import Breadcrumb from "@/components/breadcrumb.vue";

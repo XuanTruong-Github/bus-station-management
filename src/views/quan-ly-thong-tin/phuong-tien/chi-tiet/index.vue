@@ -13,33 +13,32 @@
     >
         <div class="flex items-center justify-between mb-1">
             <span class="font-medium text-base">Thông tin xe đăng ký</span>
-        
         </div>
         <hr class="mt-2 mb-6" />
-        <el-row :gutter="16">
-            <el-col :span="12" :offset="0">
+        <ElRow :gutter="16">
+            <ElCol :span="12" :offset="0">
                 <el-form-item label="Biển kiểm soát" prop="bienKiemSoat">
-                    <el-input
+                    <ElInput
                         v-model="phuongTien.bienKiemSoat"
                         :maxlength="200"
                         show-word-limit
                         placeholder="Biển kiểm soát"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="6" :offset="0">
+            </ElCol>
+            <ElCol :span="6" :offset="0">
                 <el-form-item label="Số đăng ký xe" prop="soDangKyPhuongTien">
-                    <el-input
+                    <ElInput
                         v-model="phuongTien.soDangKyPhuongTien"
                         :maxlength="200"
                         show-word-limit
                         placeholder="Số đăng ký xe"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="6" :offset="0">
+            </ElCol>
+            <ElCol :span="6" :offset="0">
                 <el-form-item label="Loại xe" prop="idLoaiPhuongTien">
-                    <el-select
+                    <ElSelect
                         v-model="phuongTien.idLoaiPhuongTien"
                         class="w-full"
                         no-data-text="Không có dữ liệu"
@@ -48,67 +47,67 @@
                         filterable
                         placeholder="Chọn loại xe"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in phuongTienStore.danhSachLoaiPhuongTien"
                             :label="item.tenLoai"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-        </el-row>
-        <el-row :gutter="16">
-            <el-col :span="6" :offset="0">
+            </ElCol>
+        </ElRow>
+        <ElRow :gutter="16">
+            <ElCol :span="6" :offset="0">
                 <el-form-item label="Số khung" prop="soKhung">
-                    <el-input
+                    <ElInput
                         v-model="phuongTien.soKhung"
                         :maxlength="200"
                         show-word-limit
                         placeholder="Số khung"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="6" :offset="0">
+            </ElCol>
+            <ElCol :span="6" :offset="0">
                 <el-form-item label="Số máy" prop="soMay">
-                    <el-input
+                    <ElInput
                         v-model="phuongTien.soMay"
                         :maxlength="200"
                         show-word-limit
                         placeholder="Số máy"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="6" :offset="0">
+            </ElCol>
+            <ElCol :span="6" :offset="0">
                 <el-form-item label="Số ghế" prop="soGhe">
-                    <el-input
+                    <ElInput
                         v-model="phuongTien.soGhe"
                         type="number"
                         :min="0"
                         :max="100"
                         placeholder="Số ghế"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="6" :offset="0">
+            </ElCol>
+            <ElCol :span="6" :offset="0">
                 <el-form-item label="Số giường" prop="soGiuong">
-                    <el-input
+                    <ElInput
                         v-model="phuongTien.soGiuong"
                         type="number"
                         :min="0"
                         :max="15"
                         placeholder="Số giường"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-        </el-row>
-        <el-row :gutter="16">
-            <el-col :span="12" :offset="0">
+            </ElCol>
+        </ElRow>
+        <ElRow :gutter="16">
+            <ElCol :span="12" :offset="0">
                 <el-form-item
                     label="Doanh nghiệp vận tải"
                     prop="idDoanhNghiepVanTai"
                 >
-                    <el-select
+                    <ElSelect
                         v-model="phuongTien.idDoanhNghiepVanTai"
                         class="w-full"
                         no-data-text="Không có dữ liệu"
@@ -117,18 +116,18 @@
                         filterable
                         placeholder="Chọn doanh nghiệp vận tải"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in doanhNghiepVanTaiStore.danhSachDoanhNghiepVanTai"
                             :label="item.tenDoanhNghiepVanTai"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-            <el-col :span="12" :offset="0">
+            </ElCol>
+            <ElCol :span="12" :offset="0">
                 <el-form-item label="Nhà xe" prop="nhaXe">
-                    <el-select
+                    <ElSelect
                         v-model="phuongTien.nhaXe"
                         class="w-full"
                         no-data-text="Không có dữ liệu"
@@ -139,20 +138,20 @@
                         placeholder="Chọn nhà xe"
                         :disabled="phuongTien.idDoanhNghiepVanTai == null"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in nhaXeStore.danhSachNhaXe"
                             :label="item.tenNhaXe"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-        </el-row>
+            </ElCol>
+        </ElRow>
         <span class="font-medium text-base block">Thông tin hạn hiệu lực</span>
         <hr class="mt-2 mb-6" />
-        <el-row :gutter="16">
-            <el-col :span="8" :offset="0">
+        <ElRow :gutter="16">
+            <ElCol :span="8" :offset="0">
                 <el-form-item label="Hạn bảo hiểm" prop="hanBaoHiemXe">
                     <el-date-picker
                         v-model="phuongTien.hanBaoHiemXe"
@@ -161,8 +160,8 @@
                         placeholder="Hạn bảo hiểm"
                     />
                 </el-form-item>
-            </el-col>
-            <el-col :span="8" :offset="0">
+            </ElCol>
+            <ElCol :span="8" :offset="0">
                 <el-form-item label="Hạn đăng kiểm" prop="hanDangKiemXe">
                     <el-date-picker
                         v-model="phuongTien.hanDangKiemXe"
@@ -171,8 +170,8 @@
                         placeholder="Hạn đăng kiểm"
                     />
                 </el-form-item>
-            </el-col>
-            <el-col :span="8" :offset="0">
+            </ElCol>
+            <ElCol :span="8" :offset="0">
                 <el-form-item label="Hạn đăng ký" prop="hanDangKyXe">
                     <el-date-picker
                         v-model="phuongTien.hanDangKyXe"
@@ -181,65 +180,65 @@
                         placeholder="Hạn đăng ký"
                     />
                 </el-form-item>
-            </el-col>
-        </el-row>
+            </ElCol>
+        </ElRow>
         <span class="font-medium text-base block">Khoang chứa hàng</span>
         <hr class="mt-2 mb-6" />
-        <el-row :gutter="16">
-            <el-col :span="8" :offset="0">
+        <ElRow :gutter="16">
+            <ElCol :span="8" :offset="0">
                 <el-form-item
                     label="Chiều dài (m)"
                     prop="chieuDaiKhoangChuaHang"
                 >
-                    <el-input
+                    <ElInput
                         v-model="phuongTien.chieuDaiKhoangChuaHang"
                         type="number"
                         :min="0"
                         :max="1000"
                         placeholder="Chiều dài"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="8" :offset="0">
+            </ElCol>
+            <ElCol :span="8" :offset="0">
                 <el-form-item
                     label="Chiều rộng (m)"
                     prop="chieuRongKhoangChuaHang"
                 >
-                    <el-input
+                    <ElInput
                         v-model="phuongTien.chieuRongKhoangChuaHang"
                         type="number"
                         :min="0"
                         :max="1000"
                         placeholder="Chiều rộng"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="8" :offset="0">
+            </ElCol>
+            <ElCol :span="8" :offset="0">
                 <el-form-item
                     label="Chiều cao (m)"
                     prop="chieuCaoKhoangChuaHang"
                 >
-                    <el-input
+                    <ElInput
                         v-model="phuongTien.chieuCaoKhoangChuaHang"
                         type="number"
                         :min="0"
                         :max="1000"
                         placeholder="Chiều cao"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-        </el-row>
+            </ElCol>
+        </ElRow>
         <span class="font-medium text-base block"
             >Thông tin giám sát hành trình</span
         >
         <hr class="mt-2 mb-6" />
-        <el-row :gutter="16">
-            <el-col :span="8" :offset="0">
+        <ElRow :gutter="16">
+            <ElCol :span="8" :offset="0">
                 <el-form-item
                     label="Hãng giám sát hành trình"
                     prop="idHangGiamSatHanhTrinh"
                 >
-                    <el-select
+                    <ElSelect
                         v-model="phuongTien.idHangGiamSatHanhTrinh"
                         class="w-full"
                         no-data-text="Không có dữ liệu"
@@ -247,28 +246,28 @@
                         filterable
                         placeholder="Hãng giám sát hành trình"
                     >
-                        <el-option
+                        <ElOption
                             v-for="item in phuongTienStore.danhSachHangGiamSatHanhTrinh"
                             :label="item.tenHangGiamSatHanhTrinh"
                             :value="item.id"
                             :key="item.id"
                         />
-                    </el-select>
+                    </ElSelect>
                 </el-form-item>
-            </el-col>
-            <el-col :span="8" :offset="0">
+            </ElCol>
+            <ElCol :span="8" :offset="0">
                 <el-form-item label="Tài khoản" prop="taiKhoanGiamSatHanhTrinh">
-                    <el-input
+                    <ElInput
                         v-model="phuongTien.taiKhoanGiamSatHanhTrinh"
                         :maxlength="200"
                         show-word-limit
                         placeholder="Tài khoản"
-                    ></el-input>
+                    ></ElInput>
                 </el-form-item>
-            </el-col>
-            <el-col :span="8" :offset="0">
+            </ElCol>
+            <ElCol :span="8" :offset="0">
                 <el-form-item label="Mật khẩu" prop="matKhauGiamSatHanhTrinh">
-                    <el-input
+                    <ElInput
                         v-model="phuongTien.matKhauGiamSatHanhTrinh"
                         type="password"
                         autocomplete="off"
@@ -277,11 +276,11 @@
                         placeholder="Mật khẩu"
                     />
                 </el-form-item>
-            </el-col>
-        </el-row>
+            </ElCol>
+        </ElRow>
         <div class="flex justify-between items-center mt-4">
             <div>
-                <el-button
+                <ElButton
                     type="danger"
                     size="default"
                     icon="delete"
@@ -289,12 +288,12 @@
                     v-show="true"
                     @click="showConfirmDelete = true"
                     v-if="chucNang == 'sua-phuong-tien'"
-                ></el-button>
+                ></ElButton>
             </div>
-            <el-button type="primary" @click="onSubmit">Lưu lại</el-button>
+            <ElButton type="primary" @click="onSubmit">Lưu lại</ElButton>
         </div>
     </el-form>
-    <el-dialog
+    <ElDialog
         v-model="showConfirmDelete"
         :width="480"
         title="Xác nhận xóa"
@@ -307,16 +306,16 @@
         </p>
         <template #footer>
             <div class="flex items-center justify-end">
-                <el-button @click="showConfirmDelete = false">Hủy</el-button>
-                <el-button type="danger" @click="xoaPhuongTien">
+                <ElButton @click="showConfirmDelete = false">Hủy</ElButton>
+                <ElButton type="danger" @click="xoaPhuongTien">
                     Xác nhận
-                </el-button>
+                </ElButton>
             </div>
         </template>
-    </el-dialog>
-    <el-dialog v-model="showImage">
+    </ElDialog>
+    <ElDialog v-model="showImage">
         <img class="w-full" :src="currentImage" alt="Ảnh phương tiện" />
-    </el-dialog>
+    </ElDialog>
 </template>
 <script>
 import Breadcrumb from "@/components/breadcrumb.vue";
