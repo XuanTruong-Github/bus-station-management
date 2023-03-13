@@ -24,3 +24,9 @@ input:-webkit-autofill {
 .el-input__suffix-inner {
   color: #67c23a;
 }
+.el-pagination {
+  .el-pager li:not(.is-active),
+  button {
+    border: solid 1px lightgray !important;
+  }
+}

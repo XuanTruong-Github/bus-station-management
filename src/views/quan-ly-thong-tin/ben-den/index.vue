@@ -1,189 +1,235 @@
 <template>
-    <Breadcrumb :dataSource="breadcrumbItems" />
-    <section class="flex items-center justify-between my-4">
-        <div class="flex">
-            <el-button icon="Refresh" @click="store.FindAll">
-                Tải lại
-            </el-button>
-            <el-button icon="Download" @click="exportExcel"> Excel </el-button>
-        </div>
-        <el-button
-            type="primary"
-            @click="$router.push({ name: 'them-ben-den' })"
-        >
-            <template #icon>
-                <i class="mdi mdi-plus text-lg"></i>
-            </template>
-            Thêm bến đến</el-button
-        >
-    </section>
-    <DxDataGrid
-        ref="benDenTable"
-        class="table-page"
-        :show-borders="true"
-        :data-source="store.danhSachBenXe"
-        :remote-operations="true"
-        :allow-column-resizing="true"
-        :column-auto-width="true"
-        :showRowLines="true"
-        :showColumnLines="true"
-        :hover-state-enabled="true"
-        :rowAlternationEnabled="true"
-        :loadPanel="{ showIndicator: false, showPane: false, text: '' }"
-        height="calc(100vh - 118px)"
-        key-expr="id"
-        width="100%"
-        no-data-text="Không có dữ liệu!"
-        :onRowDblClick="rowClick"
-    >
-        <DxPaging :page-size="30" />
-        <DxScrolling mode="standard" row-rendering-mode="standard" />
-        <DxColumnFixing :enabled="true" />
-        <DxHeaderFilter :visible="true" />
-        <DxFilterRow :visible="true" apply-filter="auto" />
+  <Breadcrumb :dataSource="breadcrumbItems" />
+  <section class="flex items-center justify-between mb-6">
+    <h3 class="uppercase">Danh sách bến đến</h3>
+    <div class="">
+      <ElButton icon="Refresh" @click="getData"> Tải lại </ElButton>
+      <ElButton type="primary" @click="$router.push({ name: 'them-ben-den' })">
+        <template #icon>
+          <i class="text-lg mdi mdi-plus"></i>
+        </template>
+        Thêm bến đến</ElButton
+      >
+    </div>
+  </section>
 
-        <DxPager
-            :visible="true"
-            allowed-page-sizes="auto"
-            :show-navigation-buttons="true"
-        />
-        <DxColumn
-            caption="STT"
-            dataField="stt"
-            :allowFiltering="false"
-            :allowSorting="false"
-            :allowHeaderFiltering="false"
-            :fixed="true"
-            :width="70"
-            alignment="center"
-            :calculateCellValue="customSTT"
-        ></DxColumn>
-        <DxColumn
-            caption="Mã bến xe"
-            dataField="maBenXe"
-            :allowHeaderFiltering="false"
-            :allowFiltering="true"
-            :allowSorting="true"
-            alignment="center"
-            :width="100"
-            :fixed="true"
-        ></DxColumn>
-        <DxColumn
-            dataField="tenBenXe"
-            caption="Tên bến xe"
-            alignment="left"
-            :allowHeaderFiltering="false"
-            :allowSorting="false"
-            :width="300"
-        ></DxColumn>
+  <ElForm
+    label-position="top"
+    size="large"
+    :model="filters"
+    scroll-to-error
+    class="px-4 pt-4 mb-6 bg-white border rounded"
+  >
+    <ElRow :gutter="16">
+      <ElCol :sm="16" :md="10"
+        ><ElFormItem label="Tìm kiếm bến đến" prop="tenBenXe">
+          <ElInput
+            v-model="filters.tenBenXe"
+            :maxlength="200"
+            placeholder="Bến xe Mỹ Đình, Yên Nghĩa, Giáp Bát..."
+          ></ElInput>
+        </ElFormItem>
+      </ElCol>
+      <ElCol :sm="8" :md="3" :lg="4">
+        <ElFormItem label="Mã bến xe" prop="maBenXe">
+          <ElInput
+            v-model="filters.maBenXe"
+            type="number"
+            :min="0"
+            :max="1000"
+            placeholder="10"
+          ></ElInput>
+        </ElFormItem>
+      </ElCol>
+      <ElCol :sm="12" :md="5" :lg="4">
+        <ElFormItem label="Loại bến xe" prop="loaiBenXe">
+          <ElSelect
+            placeholder="Chọn loại bến xe"
+            class="w-full"
+            no-data-text="Không có dữ liệu"
+            no-match-text="Không tìm thấy"
+            default-first-option
+            filterable
+            v-model="filters.loaiBenXe"
+          >
+            <ElOption
+              v-for="item in danhSachStore.danhSachLoaiBenXe"
+              :label="item.loaiBen"
+              :value="item.id"
+              :key="item.id"
+            />
+          </ElSelect>
+        </ElFormItem>
+      </ElCol>
+      <ElCol :sm="12" :md="6">
+        <ElFormItem label="Tỉnh thành" prop="idLoaiBenXe">
+          <ElSelect
+            placeholder="Chọn tỉnh/thành phố"
+            class="w-full"
+            no-data-text="Không có dữ liệu"
+            no-match-text="Không tìm thấy"
+            default-first-option
+            filterable
+            v-model="filters.tinhThanh"
+          >
+            <ElOption
+              v-for="item in danhSachStore.danhSachTinhThanh"
+              :label="item.tenTinh"
+              :value="item.id"
+              :key="item.id"
+            />
+          </ElSelect>
+        </ElFormItem>
+      </ElCol>
+    </ElRow>
+  </ElForm>
 
-        <DxColumn
-            dataField="tinhThanhPho.tenTinh"
-            :allowSorting="true"
-            caption="Tỉnh thành"
-            alignment="left"
-            :width="200"
-        ></DxColumn>
-        <DxColumn
-            dataField="loaiBenXe.loaiBen"
-            :allowSorting="true"
-            caption="Loại bến"
-            alignment="left"
-            :width="120"
-        ></DxColumn>
-        <DxColumn
-            caption="Email"
-            dataField="email"
-            :allowSorting="false"
-            :allowHeaderFiltering="false"
-            alignment="left"
-            :width="300"
-        ></DxColumn>
-        <DxColumn
-            caption="Địa chỉ"
-            dataField="diaChi"
-            :allowHeaderFiltering="false"
-            :allowSorting="false"
-            alignment="left"
-            :minWidth="300"
-            :calculate-cell-value="customDiaChi"
-        ></DxColumn>
-
-
-    </DxDataGrid>
+  <ElTable
+    :data="table.records"
+    :load="table.loading"
+    style="width: 100%"
+    :lazy="true"
+    border
+    row-key="id"
+    empty-text="Không có bến đến nào!"
+    @row-dblclick="rowClick"
+  >
+    <ElTableColumn
+      label="STT"
+      type="index"
+      align="center"
+      :width="70"
+      fixed
+      :index="(index) => index + 1"
+    />
+    <ElTableColumn
+      label="Mã bến xe"
+      prop="maBenXe"
+      align="center"
+      :width="100"
+      fixed
+    />
+    <ElTableColumn label="Tên bến xe" prop="tenBenXe" :width="300" />
+    <ElTableColumn
+      label="Tỉnh thành"
+      prop="tinhThanhPho.tenTinh"
+      :width="200"
+    />
+    <ElTableColumn
+      label="Loại bến"
+      prop="loaiBenXe.loaiBen"
+      align="center"
+      :width="120"
+    />
+    <ElTableColumn label="Email" prop="email" :width="300" />
+    <ElTableColumn label="Địa chỉ" prop="diaChi">
+      <template #default="{ row }">{{ customDiaChi(row) }}</template>
+    </ElTableColumn>
+  </ElTable>
+  <div
+    class="flex items-center justify-between p-4 mt-4 bg-white border rounded"
+  >
+    <ElButton icon="Download" @click="exportExcel">Xuất File Excel </ElButton>
+    <ElPagination
+      background
+      layout="prev, pager, next"
+      :page-size="table.pagination.limit"
+      :total="table.pagination.total"
+      hide-on-single-page
+      @current-change="setPage"
+    />
+  </div>
 </template>
 <script>
 import Breadcrumb from "@/components/breadcrumb.vue";
-import {
-    DxDataGrid,
-    DxPaging,
-    DxScrolling,
-    DxColumnFixing,
-    DxHeaderFilter,
-    DxFilterRow,
-    DxColumn,
-    DxPager,
-} from "devextreme-vue/data-grid";
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-import useBenXeStore from "@/stores/benXe";
+import supabase from "@/plugins/supabase";
+import useDanhSachStore from "@/stores/danhSach";
 
 export default {
-    components: {
-        Breadcrumb,
-        DxDataGrid,
-        DxPaging,
-        DxScrolling,
-        DxColumnFixing,
-        DxHeaderFilter,
-        DxFilterRow,
-        DxColumn,
-        DxPager,
+  components: {
+    Breadcrumb,
+  },
+  setup() {
+    const danhSachStore = useDanhSachStore();
+    danhSachStore.getDanhSachTinhThanh();
+    danhSachStore.getDanhSachLoaiBenXe();
+    return {
+      danhSachStore,
+    };
+  },
+  data() {
+    return {
+      breadcrumbItems: [
+        {
+          text: "Quản lý bến đến",
+          disabled: true,
+        },
+      ],
+      table: {
+        loading: false,
+        records: [],
+        pagination: {
+          limit: 20,
+          page: 1,
+          total: 0,
+        },
+      },
+      filters: {
+        tenBenXe: "",
+        maBenXe: "",
+        loaiBenXe: "",
+        tinhThanh: "",
+      },
+    };
+  },
+  methods: {
+    customDiaChi({ diaChi, quanHuyenThiXa }) {
+      if (diaChi && quanHuyenThiXa) {
+        return `${diaChi}, ${quanHuyenThiXa?.tenHuyen}`;
+      } else if (diaChi == null && quanHuyenThiXa) {
+        return quanHuyenThiXa.tenHuyen;
+      } else return "";
     },
-    setup() {
-        const router = useRouter();
-        const benDenTable = ref(null);
-        const breadcrumbItems = [
-            {
-                text: "Quản lý bến đến",
-                disabled: true,
-            },
-        ];
-        const store = useBenXeStore();
-        const customSTT = (column) => {
-            return store.danhSachBenXe.indexOf(column) + 1;
-        };
-        const customDiaChi = ({ diaChi, quanHuyenThiXa }) => {
-            if (diaChi && quanHuyenThiXa) {
-                return `${diaChi}, ${quanHuyenThiXa?.tenHuyen}`;
-            } else if (diaChi == null && quanHuyenThiXa) {
-                return quanHuyenThiXa.tenHuyen;
-            } else return "";
-        };
-        const rowClick = ({ key }) => {
-            router.push({ name: "sua-ben-den", query: { id: key } });
-        };
-        const exportExcel = () => {
-            loading.start();
-            const init = {
-                Element: benDenTable.value.instance,
-                FileName: "Danh-Sach-Ben-Den",
-                WorkSheet: "Danh sách bến đến",
-            };
-            helpers.excel(init).Export();
-            loading.stop();
-        };
-
-        store.FindAll();
-        return {
-            breadcrumbItems,
-            exportExcel,
-            benDenTable,
-            store,
-            customSTT,
-            customDiaChi,
-            rowClick,
-        };
+    rowClick({ id }) {
+      this.$router.push({ name: "sua-ben-den", query: { id } });
     },
+    setPage(page) {
+      this.table.pagination.page = page;
+      this.getData();
+    },
+    exportExcel() {
+      loading.start();
+      loading.stop();
+    },
+    async getData() {
+      loading.start();
+      const query =
+        "*,loaiBenXe(loaiBen),tinhThanhPho(tenTinh),quanHuyenThiXa(tenHuyen)";
+      const { from, to } = helpers.getPagination(
+        this.table.pagination.page,
+        this.table.pagination.limit
+      );
+      const { data, error, count } = await supabase
+        .from("benXe")
+        .select(query, { count: "exact" })
+        .range(from, to);
+      if (error) {
+        console.log("Error: ", error);
+        message("error", "Lấy danh sách bến xe thất bại! Lỗi hệ thống");
+      } else {
+        this.table.records = data;
+        this.table.pagination.total = count;
+      }
+      loading.stop();
+    },
+  },
+  created() {
+    this.getData();
+  },
 };
 </script>
+<style scoped>
+>>> .el-form-item__label {
+  font-weight: 600;
+}
+</style>

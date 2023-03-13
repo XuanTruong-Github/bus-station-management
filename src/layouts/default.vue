@@ -4,7 +4,7 @@ import Sidebar from "@/components/sidebar.vue";
 <template>
   <el-container class="h-screen">
     <Sidebar />
-    <el-main class="bg-gray-100 max-h-screen">
+    <el-main class="max-h-screen bg-gray-100">
       <slot></slot>
     </el-main>
   </el-container>
